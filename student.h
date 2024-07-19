@@ -11,7 +11,7 @@ class Student
 public:
 	const static int daysCompleteCourseArray = 30;
 private:
-	int studentId;
+	string studentId;
 	string firstName;
 	string lastName;
 	string emailAddress;
@@ -20,10 +20,10 @@ private:
 	DegreeProgram degreeProgram;
 public:
 	Student();
-	Student(int studentId, string firstName, string lastName, string emailAddress, int age, int days[], DegreeProgram degreeProgram);
+	Student(string studentId, string firstName, string lastName, string emailAddress, int age, int daysInCourse[], DegreeProgram degreeProgram);
 	~Student();
 
-	int getId();
+	string getId();
 	string getFirstName();
 	string getLastName();
 	string getEmailAddress();
