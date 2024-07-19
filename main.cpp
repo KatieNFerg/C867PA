@@ -28,20 +28,19 @@ int main()
     for (int i = 0; i < 3; i++)
     {
         cout << "Displaying by degree program: " << degreeProgramStrings[i] << std::endl;
-        roster.printByDegreeProgram((DegreeProgram)i);
+        roster.printByDegreeProgram(SOFTWARE);
     }
 
     cout << "Displaying students with invalid emails" << std::endl;
     roster.printInvalidEmails();
     cout << std::endl;
-    string studentId = "A3";
+ 
     cout << "Displaying average days: " << std::endl;
-    roster.printAverageDaysInCourse(studentId);
+    roster.printAverageDaysInCourse("A3");
 
     cout << "Removing student with Id" << std::endl;
-    roster.remove(studentId);
+    roster.remove("A3");
     cout << std::endl;
 
-    system("pause");
-    return 0;
+   
 }

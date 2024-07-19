@@ -125,5 +125,11 @@ void Roster::remove(string studentId)
 
 Roster::~Roster()
 {
-	return;
+	cout << "Destructor called" << std::endl << std::endl;
+	for(int i = 0; i < numStudents; i++)
+	{
+		cout << "Destroying student " << i + 1 << std::endl;
+		delete classRosterArray[i];
+		classRosterArray[i] = nullptr;
+	}
 }
