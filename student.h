@@ -1,46 +1,49 @@
-#pragma once
+#ifndef STUDENT_H
+#define STUDENT_H
 #include <iostream>
-#include <iomanip>
 #include "degree.h"
-using std::string;
-using std::cout;
-using std::endl;
+#include <string>
+using namespace std;
+
 
 class Student
 {
-public:
-	const static int daysCompleteCourseArray = 30;
 private:
 	string studentId;
 	string firstName;
 	string lastName;
 	string emailAddress;
 	int age;
-	int days[daysCompleteCourseArray];
+	int daysInCourse[3];
 	DegreeProgram degreeProgram;
 public:
 	Student();
 	Student(string studentId, string firstName, string lastName, string emailAddress, int age, int daysInCourse[], DegreeProgram degreeProgram);
-	~Student();
 
-	string getId();
+
+	void setId(string sId);
+	void setFirstName(string firstName);
+	void setLastName(string lastName);
+	void setEmailAddress(string emailAddress);
+	void setAge(int studentAge);
+	void setDaysInCourse(int daysInCourse1, int daysInCourse2, int daysInCourse3);
+	void setDegreeProgram(DegreeProgram degreeProgram);
+	string getStudentId();
 	string getFirstName();
 	string getLastName();
 	string getEmailAddress();
 	int getAge();
-	int* getDays();
+	int* getDaysInCourse();
+
 	DegreeProgram getDegreeProgram();
-
-	void setId(string Id);
-	void setFirstName(string firstName);
-	void setLastName(string lastName);
-	void setEmailAddress(string emailAddress);
-	void setAge(int age);
-	void setDays(int days[]);
-	void setDegreeProgram(DegreeProgram dp);
-
-	static void printHeader();
-
+	void printId();
+	void printFirstName();
+	void printLastName();
+	void printEmailAddress();
+	void printAge();
+	void printDaysToComplete();
+	void printDegreeProgram();
 	void print();
 
 };
+#endif

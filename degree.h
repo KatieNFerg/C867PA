@@ -1,5 +1,9 @@
-#pragma once
-#include <string>
+#ifndef DEGREE_H
+#define DEGREE_H
+#include <iostream>
+
+using namespace std;
+
 enum DegreeProgram { SECURITY, NETWORK, SOFTWARE };
 
-static const std::string degreeProgramStrings[] = { "SECURITY", "NETWORK", "SOFTWARE" };
+#endif

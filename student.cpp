@@ -1,4 +1,9 @@
+#include <iostream>
 #include "student.h"
+#include "degree.h"
+#include <string>
+using namespace std;
+
 Student::Student()
 {
 	this->studentId = "";
@@ -6,56 +11,140 @@ Student::Student()
 	this->lastName = "";
 	this->emailAddress = "";
 	this->age = 0;
-	for (int i = 0; i < daysCompleteCourseArray; i++) this->days[i] = 0;
-	this->degreeProgram = DegreeProgram::SECURITY;
+	this->daysInCourse[0] = 0;
+	this->daysInCourse[1] = 0;
+	this->daysInCourse[2] = 0;
+	this->degreeProgram;
 }
 
-Student::Student(string studentId, string firstName, string lastName, string emailAddress, int age, int days[], DegreeProgram degreeProgram)
+Student::Student(string studentId, string firstName, string lastName, string emailAddress, int age, int daysInCourse[], DegreeProgram degreeProgram)
 {
 	this->studentId = studentId;
 	this->firstName = firstName;
 	this->lastName = lastName;
 	this->emailAddress = emailAddress;
 	this->age = age;
-	for (int i = 0; i < daysCompleteCourseArray; i++) this->days[i] = days[i];
+	this->daysInCourse[0] = daysInCourse[0];
+	this->daysInCourse[1] = daysInCourse[1];
+	this->daysInCourse[2] = daysInCourse[2];
 	this->degreeProgram = degreeProgram;
 }
 
-Student::~Student() {}
+void Student::setId(string sId) {
+	this->studentId = sId;
 
-string Student::getId() { return this->studentId;  }
-string Student::getFirstName() { return this->firstName; }
-string Student::getLastName() { return this->lastName; }
-string Student::getEmailAddress() { return this->emailAddress; }
-int Student::getAge() { return this->age; }
-int* Student::getDays() { return this->days; }
-DegreeProgram Student::getDegreeProgram() { return this->degreeProgram; }
+	return;
 
-void Student::setId(string Id) { this->studentId = Id; }
-void Student::setFirstName(string firstName) { this->firstName = firstName; }
-void Student::setLastName(string lastName) { this->lastName = lastName; }
-void Student::setEmailAddress(string emailAddress) { this->emailAddress = emailAddress; }
-void Student::setAge(int age) { this->age = age; }
-void Student::setDays(int Days[])
-{
-	for (int i = 0; i < daysCompleteCourseArray; i++) this->days[i] = days[i];
 }
-void Student::setDegreeProgram(DegreeProgram dp) { this->degreeProgram = dp; }
 
-void Student::printHeader()
-{
-	cout << "Output format: Id|FirstName|LastName|EmailAddress|Age|Days|Program\n";
+void Student::setFirstName(string firstName) {
+	this->firstName = firstName;
 }
+
+void Student::setLastName(string lastName) {
+	this->lastName = lastName;
+}
+void Student::setEmailAddress(string emailAddress) {
+	this->emailAddress = emailAddress;
+}
+
+void Student::setAge(int studentAge) {
+	this->age = studentAge;
+}
+
+void Student::setDaysInCourse(int daysInCourse1, int daysInCourse2, int daysInCourse3) {
+	for (int i = 0; i < 3; i++)
+		this->daysInCourse[0] = daysInCourse1;
+	this->daysInCourse[1] = daysInCourse2;
+	this->daysInCourse[2] = daysInCourse3;
+}
+void Student::setDegreeProgram(DegreeProgram degreeProgram) {
+	this->degreeProgram = degreeProgram;
+}
+
+string Student::getStudentId() {
+	return studentId;
+}
+string Student::getFirstName() {
+	return firstName;
+}
+
+string Student::getLastName() {
+	return lastName;
+}
+string Student::getEmailAddress() {
+	return emailAddress;
+}
+int Student::getAge() {
+	return age;
+}
+int* Student::getDaysInCourse() {
+	return daysInCourse;
+}
+DegreeProgram Student::getDegreeProgram() {
+	return degreeProgram;
+}
+void Student::printId() {
+	cout << studentId;
+	return;
+}
+void Student::printFirstName() {
+	cout << firstName << endl;
+	return;
+}
+void Student::printLastName() {
+	cout << lastName << endl;
+	return;
+}
+void Student::printEmailAddress() {
+	cout << emailAddress << endl;
+	return;
+}
+void Student::printAge() {
+	cout << age << endl;
+	return;
+}
+void Student::printDaysToComplete() {
+	cout << daysInCourse[0] << ", " << daysInCourse[1] << ", " << daysInCourse[2] << endl;
+	return;
+}
+
+void Student::printDegreeProgram() {
+	string degreeString;
+	if (degreeProgram == SOFTWARE) {
+		degreeString = "SOFTWARE";
+	}
+	else if (degreeProgram == NETWORK) {
+		degreeString = "NETWORK";
+	}
+	else if (degreeProgram == SECURITY) {
+		degreeString = "SECURITY";
+		}
+	cout << degreeString << endl;
+	return;
+}
+
 void Student::print()
 {
-	cout << this->getId() << '\t';
-	cout << this->getFirstName() << '\t';
-	cout << this->getLastName() << '\t';
-	cout << this->getEmailAddress() << '\t';
-	cout << this->getAge() << '\t';
-	cout << this->getDays()[0] << ',';
-	cout << this->getDays()[1] << ',';
-	cout << this->getDays()[2] << ',';
-	cout << degreeProgramStrings[this->getDegreeProgram()] << '\n';
+	string degreeString;
+	if (degreeProgram == SOFTWARE) {
+		degreeString = "SOFTWARE";
+	}
+	else if (degreeProgram == NETWORK) {
+		degreeString = "NETWORK";
+	}
+	else if (degreeProgram == SECURITY) {
+		degreeString = "SECURITY";
+	}
+	else {
+		degreeString = "Error";
+	}
+	cout << studentId
+		<< "\tFirst Name: " << getFirstName()
+		<< "\tLast Name: " << getLastName()
+		<< "\tAge: " << getAge()
+		<< "\tdaysInCourse: {" << getDaysInCourse()[0] << ", " << getDaysInCourse()[1] << ", " << getDaysInCourse()[2] << "} Degree Program: " << degreeString << " " << endl;
+	return;
+
 }
 
