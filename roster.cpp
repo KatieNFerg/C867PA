@@ -110,11 +110,11 @@ void Roster::remove(string studentId)
 			break;
 		}
 	}
-	if (success)
+	if (!success)
 	{
 		cout << "Student with ID " << studentId << " not found." << endl;
 	}
-	else if (!success) {
+	else if (success) {
 		cout << "Student " << studentId << " removed." << endl;
 	}
 	return;
